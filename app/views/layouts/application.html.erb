@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers2.8</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  </head>
+
+  <header class="navbar navbar-fixed-top navbar-inverse">
+    <div class="container">
+      <h4 class="nav navbar-nav navbar-left">Bookers</h4>
+        <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+
+          <li>
+            <%= link_to user_path(current_user.id), class: "my-bt" do %>
+              <i class="glyphicon glyphicon-home text-muted"> Home</i>
+              <% end %>
+          </li>
+
+          <li>
+            <%= link_to users_path, class: "my-bt" do %>
+            <i class="glyphicon glyphicon-user text-muted"> Users</i>
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to books_path, class: "my-bt" do %>
+              <i class="glyphicon glyphicon-book text-muted"> Books</i>
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to destroy_user_session_path,class: "my-bt", method: :delete do %>
+              <i class="glyphicon glyphicon-log-out text-muted"> logout</i>
+            <% end %>
+          </li>
+
+        <% else %>
+
+          <li>
+            <%= link_to root_path, class: "my-bt" do %>
+              <i class="glyphicon glyphicon-home text-muted"> Home</i>
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to home_about_path, class: "my-bt" do %>
+              <i class="glyphicon glyphicon-link text-muted"> About</i>
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to new_user_registration_path, class: "my-bt" do %>
+              <i class="glyphicon glyphicon-edit text-muted"> Sign up</i>
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to user_session_path, class: "my-bt", method: :post do %>
+              <i class="glyphicon glyphicon-log-in text-muted"> login</i>
+            <% end %>
+          </li>
+
+        <% end %>
+      </ul>
+    </div>
+  </header>
+
+<body class="margin">
+  <%= yield %>
+</body>
+
+
+<footer>
+<div class="container">
+<div class="row">
+  <h5 class="col-lg-offset-10 col-lg-2">CopyRightInfratop.inc</h5>
+</div>
+</div>
+</footer>
+
+</html>
+

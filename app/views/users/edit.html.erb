@@ -1,0 +1,43 @@
+
+<div class="container">
+<div class="row">
+<div class="col-lg-offset">
+<h2>User info</h2>
+
+  <%= form_for(@user) do |f| %>
+
+    <% if @user.errors.any? %>
+    	<div class="text-danger">
+        <ul>
+          <h3><%= @user.errors.count %>errors prohibited this user from being saved:</h3>
+        </ul>
+        <ul>
+        	<% @user.errors.full_messages.each do |msg| %>
+            <p><%= msg %></p>
+          <% end %>
+        </ul>
+    	</div>
+  	<% end %>
+
+ <h4>Name</h4>
+  <%= f.text_field :name %>
+
+ <h4>Image</h4>
+  <%= f.attachment_field :profile_image %>
+
+  <h4>Introduction</h4>
+  <%= f.text_area :introduction %>
+  <h5>
+    <%= f.submit "Update", class:"btn btn-warning" %>
+  </h5>
+
+  <%= link_to "back", user_path(@user) %>
+
+  <% end %>
+
+</div>
+</div>
+</div>
+
+
+

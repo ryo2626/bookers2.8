@@ -1,0 +1,48 @@
+<% if flash[:notice] %>
+  <div class="text-success">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+
+<div class="col">
+<h2>User info</h2>
+  <table class="table">
+      <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", size:'90x90' %>
+      <tr>
+        <td>name<td><%= user.name %>
+
+      <tr>
+        <td>introduction<td><%= user.introduction %>
+  </table>
+      <%= link_to "", edit_user_path(user.id),  class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench edit_user_9151" %>
+</div>
+
+<div class="col">
+<h2>New book</h2>
+
+<%= form_for(book_new) do |f| %>
+
+  <% if book_new.errors.any? %>
+    <div class="alert">
+      <ul>
+        <%= book_new.errors.count %>errors prohibited this user from being saved:
+      </ul>
+      <ul>
+        <% book_new.errors.full_messages.each do |msg| %>
+        <%= msg %>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h4>Title</h4>
+  <%= f.text_field :title, class:"form-control" %>
+
+  <h4>Body</h4>
+  <%= f.text_area :body, class:"form-control" %>
+
+  <h4><%= f.submit 'Create Book',  class: "btn btn-primary btn-block" %></h4>
+
+<% end %>
+</div>
