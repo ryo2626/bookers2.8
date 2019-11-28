@@ -6,6 +6,9 @@
 
 	<div class="col-lg-9">
 		<h1>Books</h1>
+
+					<div><%= render 'follow_form' %></div>
+					<div><%= render 'stats' %>
 			<table class="table table-hover">
 				<thead>
 				<tr>
@@ -17,8 +20,7 @@
 					<td><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", size:'40x40' %>
 					<td><%= link_to "#{book.title}", book_path(book.id) %>
 					<td><%= book.body %>
-					<td><%= render 'follow_form' %>
-					<td><%= render 'stats' %>
+
 					<td><%= link_to book_path(book) do %>
 	    				<li class="list-inline"><i class="far fa-comment text-muted"><%= book.book_comments.count %></i>
 	    				<% end %>

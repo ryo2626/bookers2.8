@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   root 'homes#top'
   get 'home/about' => 'homes#about'
 
+  post 'books/:id' => 'book_comment#create'
+  get 'books/:id/book_comments' => 'books#show'
+
   resources :books, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
   	resources :favorites, only: [:create, :destroy]
   	resources :book_comments, only: [:create, :destroy, :edit, :update]
